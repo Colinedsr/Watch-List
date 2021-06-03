@@ -1,0 +1,20 @@
+<h1>Information about your list </h1>
+
+  <% @list.movies.each do |movie| %>
+  <div class="card">
+    <ul>
+      <h3><%= movie.title %></h3>
+      <li><%= movie.overview %></li>
+      <li><%= movie.poster_url %></li>
+      <li><%= movie.rating %></li>
+      <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
+    </ul>
+    <%= link_to 'Remove this movie',  bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?'} %>
+
+  </div>
+  <% end %>
+
+  <%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
+  <%= link_to 'Lists', lists_path %>
+
+
