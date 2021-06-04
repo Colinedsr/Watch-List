@@ -5,7 +5,7 @@
     <ul>
       <h3><%= movie.title %></h3>
       <li><%= movie.overview %></li>
-      <li><%= movie.poster_url %></li>
+      <li><%= image_tag movie.poster_url %></li>
       <li><%= movie.rating %></li>
       <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
     </ul>
