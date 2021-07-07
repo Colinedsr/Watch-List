@@ -1,3 +1,8 @@
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
 .footer {
   background: #F4F4F4;
   display: flex;
@@ -9,6 +14,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 3rem;
 }
 
 .footer-links {
@@ -27,4 +33,8 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
 }

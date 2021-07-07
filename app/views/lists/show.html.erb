@@ -1,24 +1,21 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=background_image(@list) %>)">
-
+<div class="movie-container">
+  <div class="title">
     <h1><%= @list.name %></h1>
+    <h3><%= link_to 'Add a movie', new_list_bookmark_path(@list) %><h3>
+  </div>
+
+   <div class="card d-flex justify-content-end">
+    <% @list.movies.each do |movie| %>
+
+        <div><%= movie.title %></div>
+        <div><%= movie.overview %></div>
+        <div class="image_movie"><%= image_tag movie.poster_url %></div>
+        <div><%= movie.rating %></div>
+        <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
+      <%= link_to 'Remove this movie',  bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?'} %>
+
+    <% end %>
+  </div>
 
 </div>
-
- <div class="card d-flex justify-content-end">
-  <% @list.movies.each do |movie| %>
-
-      <div><%= movie.title %></div>
-      <div><%= movie.overview %></div>
-      <div class="image_movie"><%= image_tag movie.poster_url %></div>
-      <div><%= movie.rating %></div>
-      <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
-    <%= link_to 'Remove this movie',  bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?'} %>
-
-  <% end %>
-</div>
-
-
-  <%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
-  <%= link_to 'Lists', lists_path %>
-
-
+s
