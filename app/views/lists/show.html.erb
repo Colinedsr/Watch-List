@@ -1,21 +1,24 @@
 <div class="movie-container">
   <div class="title">
-    <h1><%= @list.name %></h1>
-    <h3><%= link_to 'Add a movie', new_list_bookmark_path(@list) %><h3>
+    <h1 class="d-flex justify-content-center"><%= @list.name %></h1>
+    <h3 class="d-flex justify-content-center"><%= link_to 'Add a movie', new_list_bookmark_path(@list) %><h3>
   </div>
 
-   <div class="card d-flex justify-content-end">
+
     <% @list.movies.each do |movie| %>
-
-        <div><%= movie.title %></div>
-        <div><%= movie.overview %></div>
-        <div class="image_movie"><%= image_tag movie.poster_url %></div>
-        <div><%= movie.rating %></div>
+      <div class="movie card d-flex ">
+        <div class="d-flex justify-content-space-between">
+          <div class="list image_movie p-1 m-1"><%= image_tag movie.poster_url %></div>
+          <div>
+            <h3 class="info"><%= movie.title %></h3>
+            <div class="info"><%= movie.overview %></div>
+            <div class="info"><%= movie.rating %></div>
+          </div>
+        </div>
         <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
-      <%= link_to 'Remove this movie',  bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?'} %>
-
+        <div class="d-flex justify-content-end">
+          <%= link_to 'Remove this movie',  bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?'} %>
+        </div>
+      </div>
     <% end %>
-  </div>
-
 </div>
-s
