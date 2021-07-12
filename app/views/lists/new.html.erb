@@ -1,8 +1,10 @@
-<div class="container">
-<h1>Create a new list</h1>
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo %>
-  <%= f.submit %>
-<% end %>
+<div class="d-flex justify-content-center">
+  <h1>Create a new list</h1>
+</div>
+<div class="form">
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo %>
+    <%= f.submit %>
+  <% end %>
 </div>
